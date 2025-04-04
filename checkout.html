@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - OnlineBUDOL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            padding: 50px;
+        }
+        .checkout-container {
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .btn {
+            background-color: #000;
+            color: white;
+            padding: 15px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="checkout-container">
+        <h2>Checkout</h2>
+        <p>You're about to purchase from our store <strong>OnlineBUDOL</strong>.<br>Your package is scheduled for delivery within 7 to 10 days. <br> <strong>UNLIMITED FREE SHIPPING!</strong></p>
+        <h3>Shipping Information</h3>
+        <p>Name: <span id="userName"></span></p>
+        <p>Phone: <span id="userPhone"></span></p>
+        <p>Address: <span id="userAddress"></span></p>
+        
+        <button class="btn" onclick="completePurchase()">Complete Purchase</button>
+    </div>
+
+    <script>
+       
+        const userProfile = JSON.parse(localStorage.getItem("userProfile"));
+        
+        if (userProfile) {
+            document.getElementById("userName").innerText = userProfile.name;
+            document.getElementById("userPhone").innerText = userProfile.phone;
+            document.getElementById("userAddress").innerText = userProfile.address;
+        } else {
+            alert("Please complete your profile before proceeding.");
+            window.location.href = 'login.html'; 
+        }
+
+        function completePurchase() {
+            alert("Purchase complete! Thank you for shopping with us.");
+            
+            localStorage.removeItem("userProfile");
+            window.location.href = 'index.html'; 
+        }
+    </script>
+
+</body>
+</html>

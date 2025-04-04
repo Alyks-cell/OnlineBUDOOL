@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            padding: 50px;
+            text-align: center;
+        }
+        .profile-container {
+            background-color: #fff;
+            padding: 70px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 700px;
+            margin: 0 auto;
+            margin-top: 85px;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 15px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            background-color: #000;
+            color: white;
+            padding: 15px;
+            width: 80%;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #444;
+        }
+        .profile-info {
+            display: none;
+        }
+        .logout-btn {
+            background-color: #090909;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 18px;
+            width: 80%;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .logout-btn:hover {
+            background-color: #000000;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            text-decoration: none;
+            color: #bcbcbc;
+            margin: 0 15px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        nav a:hover {
+            color: #ffffff;
+        }
+        header {
+            background-color: #000000;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+    <header>
+    <nav>
+        <a href="index.html">Home</a>
+    </nav>
+</header>
+<body>
+    <div class="profile-container">
+        <h2>Profile</h2>
+
+        <div id="profile-info" class="profile-info">
+            <h3>Welcome, <span id="profile-username"></span></h3>
+            <p>Username: <span id="profile-username-info"></span></p>
+
+            <button class="btn" onclick="showProfileForm()">Update Info</button>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+
+        <form id="profile-form" onsubmit="return saveProfile(event)">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" class="btn">Save Profile</button>
+        </form>
+    </div>
+
+    <script>
+        // Check if profile is saved in localStorage
+        window.onload = function() {
+            const userProfile = localStorage.getItem("userProfile");
+            const profileInfo = document.getElementById("profile-info");
+            const profileForm = document.getElementById("profile-form");
+            const profileUsername = document.getElementById("profile-username");
+            const profileUsernameInfo = document.getElementById("profile-username-info");
+
+            if (userProfile) {
+                const profile = JSON.parse(userProfile);
+                profileInfo.style.display = "block"; // Show profile info
+                profileForm.style.display = "none";  // Hide profile form
+
+                // Display the saved profile details
+                profileUsername.textContent = profile.username;
+                profileUsernameInfo.textContent = profile.username;
+            } else {
+                profileInfo.style.display = "none";
+                profileForm.style.display = "block"; // Show form if no profile saved
+            }
+        };
+
+        // Save profile to localStorage and update display
+        function saveProfile(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username && password) {
+                const profile = { username, password };
+                localStorage.setItem("userProfile", JSON.stringify(profile));
+
+                alert("Profile saved successfully!");
+                
+                updateProfileDisplay(profile);
+            } else {
+                alert("Please fill out all fields.");
+            }
+        }
+
+        // Switch to the profile update form
+        function showProfileForm() {
+            document.getElementById("profile-info").style.display = "none";
+            document.getElementById("profile-form").style.display = "block";
+        }
+
+        // Log out and reset the profile display
+        function logout() {
+            localStorage.removeItem("userProfile");
+            alert("You have logged out.");
+            resetProfileDisplay();
+        }
+
+        // Update profile display after saving
+        function updateProfileDisplay(profile) {
+            document.getElementById("profile-info").style.display = "block";
+            document.getElementById("profile-form").style.display = "none";
+            document.getElementById("profile-username").textContent = profile.username;
+            document.getElementById("profile-username-info").textContent = profile.username;
+        }
+
+        // Reset profile display (for logout or initial load)
+        function resetProfileDisplay() {
+            document.getElementById("profile-info").style.display = "none";
+            document.getElementById("profile-form").style.display = "block";
+        }
+    </script>
+</body>
+</html>
