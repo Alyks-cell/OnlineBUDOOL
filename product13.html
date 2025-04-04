@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNISEX T-Shirt</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .product-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .product-image {
+            max-width: 400px;
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-right: 30px;
+        }
+
+        .product-details {
+            max-width: 500px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-details h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .product-details p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-details .price {
+            font-size: 24px;
+            color: #ff0000;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .product-details .btn {
+            display: inline-block;
+            padding: 15px 25px;
+            background-color: #000;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 90%;
+            transition: 0.3s;
+        }
+
+        .product-details .btn:hover {
+            background-color: #444;
+        }
+        .product-details .back-home {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #ccc;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .product-details .back-home:hover {
+            background-color: #888;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 140px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">OnlineBUDOL</div>
+        <nav>
+        </nav>
+    </header>
+
+    <section class="product-container">
+        <div class="product-image">
+            <img src="10.png" alt="UNISEX T-Shirt" style="width: 100%; height: auto; border-radius: 10px;">
+        </div>
+
+        <div class="product-details">
+            <h2>Street Cargo Pants</h2>
+            <p>Dark-toned cargo pants with a modern fit, blending comfort and functionality.</p>
+            <p class="price">P480</p>
+            <a href="#" class="btn" onclick="buyNow()">Buy Now</a>
+            <a href="index.html" class="back-home">Back to Home</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Online Ukay-Ulay. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function buyNow() {
+            alert("Item added to cart! Proceed to checkout.");
+            window.location.href = 'login.html';}
+    </script>
+
+</body>
+</html>
+
